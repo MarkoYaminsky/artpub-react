@@ -1,0 +1,12 @@
+@mixin centered-horizontal-column() {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin space-between-center-row($width) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $width;
+}

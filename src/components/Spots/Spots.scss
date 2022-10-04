@@ -1,0 +1,14 @@
+.spots {
+  img {
+    position: fixed;
+    z-index: 1;
+
+    &:first-child {
+      inset: auto auto 0 0;
+    }
+
+    &:last-child {
+      inset: 0 0 auto auto;
+    }
+  }
+}

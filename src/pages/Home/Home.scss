@@ -1,0 +1,50 @@
+@use "../../assets/styles/mixins.scss";
+@use "../../assets/styles/colors.scss";
+
+.home {
+  section {
+    min-height: 90vh;
+    width: 100vw;
+    justify-content: center;
+    @include mixins.centered-horizontal-column();
+
+    h2 {
+      font-family: Karla;
+      color: colors.$dark-blue;
+      font-size: 3.5rem;
+    }
+
+    h3 {
+      margin: 2vh 0 5vh;
+      font-size: 1.6rem;
+      font-family: Inter;
+      color: colors.$dark-blue;
+    }
+  }
+
+  .intro {
+    h2 {
+      font-size: 4rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+  .publish {
+    background-color: darken(colors.$light-gray-blue, 10%);
+
+    h2, h3 {
+      color: colors.$medium-blue;
+    }
+  }
+
+  .acquire {
+    background-color: darken(colors.$medium-blue, 15%);
+
+    h2, h3 {
+      color: colors.$light-gray-blue;
+    }
+  }
+}
