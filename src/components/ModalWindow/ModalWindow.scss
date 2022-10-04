@@ -1,0 +1,60 @@
+@use "../../assets/styles/colors.scss";
+@use "../../assets/styles/mixins.scss";
+
+.modalWindow {
+  @include mixins.centered-horizontal-column();
+  position: fixed;
+  width: 40vw;
+  height: 20vh;
+  background-color: colors.$dark-blue;
+  left: 30vw;
+  right: 30vw;
+  top: -20vh;
+  justify-content: center;
+  transition: 1s ease-in-out;
+  box-shadow: inset 0 -5em 5em rgba(0, 0, 0, 0.1),
+    0.5em 0.5em 1em rgba(0, 0, 0, 0.3);
+
+  .curtain {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    clip-path: polygon(0);
+    transition: .9s ease-in-out;
+    width: 0;
+    height: 0;
+
+    &.isShown {
+      background: rgba(0, 0, 0, 0.1);
+      clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+
+  p {
+    font-size: large;
+    color: white;
+    font-family: Karla;
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: 25%;
+    height: 20%;
+    margin: 1%;
+    position: relative;
+    top: 12%;
+    background-color: colors.$light-gray-blue;
+    border: colors.$light-gray-blue solid;
+    color: colors.$dark-blue;
+    font-family: Karla;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  &.isShown {
+    top: 2vh;
+    clip-path: circle(150vh at top);
+  }
+}

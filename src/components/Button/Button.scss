@@ -1,0 +1,19 @@
+@use "../../assets/styles/colors.scss";
+@use "../../assets/styles/mixins.scss";
+
+.button {
+  background-color: colors.$medium-blue;
+  border: solid colors.$medium-blue;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.4em 1.9em;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: Inter;
+  transition: 0.5s;
+  color: #f5f7fb;
+}
+
+.scale:hover {
+  transform: scale(95%);
+}

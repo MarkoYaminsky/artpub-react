@@ -1,0 +1,22 @@
+@use "../../assets/styles/colors.scss";
+@use "../../assets/styles/mixins.scss";
+
+$footer-height: 13vh;
+
+footer {
+  background-color: colors.$dark-blue;
+  height: $footer-height;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding-inline: 5vw;
+
+  nav {
+    @include mixins.space-between-center-row(23%);
+ 
+    img {
+      width: 180%;
+    }
+  }
+}
