@@ -1,0 +1,110 @@
+@use "../../assets/styles/mixins.scss";
+@use "../../assets/styles/colors.scss";
+
+$label-font-size: 1.3rem;
+$radio-button-border-width: 0.45rem;
+$radio-button-size: calc($label-font-size - 2 * $radio-button-border-width);
+$radio-button-unselected-color: rgb(186, 183, 183);
+$radio-button-unselected-color-hover: rgb(148, 146, 146);
+
+.catalogPage {
+  min-height: 77vh;
+  display: flex;
+
+  aside {
+    position: fixed;
+    top: 10vh;
+    padding: 2vh 1%;
+    border-right: colors.$medium-blue solid 2px;
+    height: 90vh;
+    width: 20%;
+    @include mixins.centered-horizontal-column;
+    align-items: flex-start;
+
+    input[type="text"] {
+      width: 100%;
+      font-size: 1rem;
+      height: 2rem;
+      text-indent: 5%;
+      font-family: Inter;
+      border: colors.$medium-blue solid 1px;
+      border-radius: 6px;
+      color: colors.$medium-blue;
+
+      &::placeholder {
+        opacity: 0.5;
+        color: colors.$medium-blue;
+      }
+    }
+
+    h2 {
+      font-family: Inter;
+      font-size: 1.5rem;
+      color: colors.$dark-blue;
+      margin-top: 23%;
+    }
+
+    .radioInputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      list-style: none;
+      height: 25%;
+      width: 100%;
+      color: colors.$dark-blue;
+      font-size: 2rem;
+      font-family: Inter;
+
+      &.search {
+        height: 10%;
+      }
+
+      label {
+        color: colors.$medium-blue;
+        font-size: $label-font-size;
+        cursor: pointer;
+      }
+
+      input[type="radio"] {
+        appearance: none;
+        cursor: pointer;
+
+        &::before {
+          content: "";
+          position: relative;
+          top: 0.2rem;
+          display: block;
+          border-radius: 50%;
+          background-color: $radio-button-unselected-color;
+          height: $radio-button-size;
+          width: $radio-button-size;
+          margin-right: 0.5rem;
+          border: $radio-button-unselected-color $radio-button-border-width
+            solid;
+          transition: 0.2s;
+        }
+
+        &:hover::before {
+          background-color: $radio-button-unselected-color-hover;
+          border-color: $radio-button-unselected-color-hover;
+        }
+
+        &:checked::before {
+          background-color: white;
+          border: colors.$dark-blue $radio-button-border-width solid;
+        }
+      }
+    }
+  }
+
+  .catalog {
+    position: relative;
+    left: 20%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: calc(90vh / 2);
+    z-index: 2;
+  }
+}
+ 
