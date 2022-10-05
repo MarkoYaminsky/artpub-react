@@ -18,6 +18,11 @@ $common-border-radius: 8px;
     border: colors.$dark-blue solid 2px;
     border-radius: $common-border-radius;
     padding: 5% 7%;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lighten($article-background, 10%);
+    }
   }
 
   span {

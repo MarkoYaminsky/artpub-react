@@ -6,8 +6,16 @@ const http = axios.create({
 
 export const getArticles = async (query_params?: string) => {
   const response = await http.get(
-    `/articles` + query_params
+    "/articles" + query_params
   );
   
   return response.data;
 };
+
+export const getArticleById =async (id: string) => {
+  const response = await http.get(
+    `/articles/${id}`
+  )
+
+  return response.data;
+}

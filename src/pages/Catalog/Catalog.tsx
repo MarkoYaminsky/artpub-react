@@ -81,7 +81,7 @@ export const Catalog: React.FC = () => {
   const typingHandle = {
     out: () => {
       clearTimeout(typingTimer);
-      typingTimer = setTimeout(() => getArticlesData(), 1000);
+      typingTimer = setTimeout(() => getArticlesData(), 700);
     },
     in: () => {
       clearTimeout(typingTimer);
