@@ -1,7 +1,8 @@
 import React from "react";
 import { Spots, Header, Footer } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Catalog } from "./pages";
+import { Home, Catalog, Item } from "./pages";
+import { NotFound } from "./pages";
 
 function App() {
   return (
@@ -10,8 +11,10 @@ function App() {
         <Spots />
         <Header />
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
+          <Route path="/catalog/:articleId" element={<Item />} />
         </Routes>
         <Footer />
       </div>

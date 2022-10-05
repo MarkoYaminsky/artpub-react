@@ -1,0 +1,97 @@
+@use "../../assets/styles/mixins.scss";
+@use "../../assets/styles/colors.scss";
+
+.item {
+  position: relative;
+  z-index: 2;
+
+  .success {
+    display: flex;
+    justify-content: space-between;
+
+    aside {
+      width: 60%;
+      height: 79vh;
+      background-color: colors.$medium-blue;
+      border-right: colors.$dark-blue solid 5px;
+      overflow: scroll;
+
+      p {
+        font-size: 2rem;
+        padding: 1vh 2vw;
+        color: darken(colors.$light-gray-blue, 17%);
+        font-family: Inter;
+      }
+    }
+
+    main {
+      width: 40%;
+      @include mixins.centered-horizontal-column();
+      justify-content: center;
+      padding-inline: 2vw;
+
+      .priceBlock {
+        background-color: colors.$light-gray-blue;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: colors.$dark-blue 3px solid;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding-block: 0.5vh;
+
+        h2 {
+          font-family: Inter;
+          font-size: 2rem;
+          padding-left: 2%;
+        }
+
+        .buttons {
+          @include mixins.space-between-center-row(45%);
+
+          .heart {
+            width: 15%;
+            margin-right: 5%;
+            cursor: pointer;
+
+            &:hover {
+              fill: #ff8aad !important; 
+            }
+          }
+        }
+      }
+
+      .infoBlock {
+        height: 42vh;
+        border: colors.$dark-blue 3px solid;
+        border-top: transparent;
+        width: 100%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        @include mixins.centered-horizontal-column;
+        justify-content: space-between;
+        padding-bottom: 2%;
+        padding-top: 11vh;
+
+        h1 {
+          margin-top: 4vh;
+          color: colors.$dark-blue;
+          font-size: 3rem;
+          text-align: center;
+        }
+
+        .author {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          h2 {
+            font-family: Karla;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}
