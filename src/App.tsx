@@ -1,7 +1,7 @@
 import React from "react";
 import { Spots, Header, Footer } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, Catalog } from "./pages";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
         </Routes>
         <Footer />
       </div>

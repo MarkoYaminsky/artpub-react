@@ -7,7 +7,7 @@ footer {
   background-color: colors.$dark-blue;
   height: $footer-height;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   padding-inline: 5vw;
