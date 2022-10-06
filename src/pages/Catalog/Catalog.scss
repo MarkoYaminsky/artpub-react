@@ -103,7 +103,7 @@ $radio-button-unselected-color-hover: rgb(148, 146, 146);
     width: 80%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: calc(90vh / 2);
+    grid-auto-rows: 45vh;
     z-index: 2;
   }
 }

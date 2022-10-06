@@ -1,7 +1,7 @@
 import React from "react";
 import { Spots, Header, Footer } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Catalog, Item } from "./pages";
+import { Home, Catalog, Item, ContactUs } from "./pages";
 import { NotFound } from "./pages";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:articleId" element={<Item />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <Footer />
       </div>
