@@ -8,6 +8,7 @@ $common-border-radius: 8px;
 .articleCard {
   @include mixins.centered-horizontal-column();
   padding: 1vh 1vw;
+  height: 45vh;
 
   .inner {
     @include mixins.centered-horizontal-column();
@@ -68,4 +69,8 @@ $common-border-radius: 8px;
     color: white;
     font-family: Karla;
   }
+}
+
+a {
+  text-decoration: none;
 }

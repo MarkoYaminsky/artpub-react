@@ -1,0 +1,118 @@
+@use "../../assets/styles/mixins.scss";
+@use "../../assets/styles/colors.scss";
+
+$label-font-size: 1.5rem;
+$radio-button-border-width: 0.45rem;
+$radio-button-size: calc($label-font-size - 2 * $radio-button-border-width);
+$radio-button-unselected-color: rgb(186, 183, 183);
+$radio-button-unselected-color-hover: rgb(148, 146, 146);
+
+.contactUs {
+  min-height: 79vh;
+  @include mixins.centered-horizontal-column();
+
+  h1 {
+    color: colors.$medium-blue;
+    font-size: 5rem;
+    font-family: Karla;
+    margin-block: 8vh;
+  }
+
+  form {
+    @include mixins.centered-horizontal-column();
+    .text {
+      height: 91vh;
+      @include mixins.centered-horizontal-column();
+      justify-content: space-between;
+
+      input[type="text"] {
+        width: 60vw;
+        font-size: 2rem;
+        height: 4rem;
+        text-indent: 2%;
+        font-family: Inter;
+        border: none;
+        border-bottom: colors.$medium-blue solid 1px;
+        color: colors.$medium-blue;
+
+        &::placeholder {
+          opacity: 0.5;
+          color: colors.$medium-blue;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      textarea {
+        margin-top: 1vh;
+        resize: none;
+        width: 60vw;
+        height: 35vh;
+        color: colors.$medium-blue;
+        font-size: 1.5rem;
+        padding: 1% 1%;
+        font-family: Inter;
+
+        &::placeholder {
+          opacity: 0.5;
+          color: colors.$medium-blue;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .error {
+        margin: 0.1vh;
+        color: red;
+        font-family: Inter;
+      }
+
+      & > div {
+        height: 20vh;
+      }
+    }
+
+    label {
+      font-size: 1.5rem;
+      margin-block: 2vh;
+      color: colors.$dark-blue;
+      font-family: Inter;
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        position: relative;
+        top: 0.2rem;
+        display: block;
+        background-color: $radio-button-unselected-color;
+        height: $radio-button-size;
+        width: $radio-button-size;
+        margin-right: 0.5rem;
+        border: $radio-button-unselected-color $radio-button-border-width solid;
+        transition: 0.2s;
+      }
+
+      &:hover::before {
+        background-color: $radio-button-unselected-color-hover;
+        border-color: $radio-button-unselected-color-hover;
+      }
+
+      &:checked::before {
+        background-color: white;
+        border: colors.$dark-blue $radio-button-border-width solid;
+      }
+    }
+
+    button {
+      margin-block: 3vh;
+    }
+  }
+}

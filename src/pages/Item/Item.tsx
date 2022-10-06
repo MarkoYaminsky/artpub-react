@@ -34,7 +34,7 @@ export const Item: React.FC = () => {
             <div className="priceBlock">
               <h2>Price - ${articleData?.price}</h2>
               <div className="buttons">
-                <Button text="Buy now" fontSize="1.2rem" class="buy" />
+                <Button text="Buy now" fontSize="1.2rem" class="scale" />
                 <img
                   src={isFavorite ? heartSub : heartUnsub}
                   alt="heart"
@@ -47,7 +47,7 @@ export const Item: React.FC = () => {
               <h1>{articleData?.title}</h1>
               <div className="author">
                 <h2>Created by {articleData?.author}</h2>
-                <Button text="Subscribe" fontSize="1.1rem" class="subscribe" />
+                <Button text="Subscribe" fontSize="1.1rem" class="scale" />
               </div>
             </div>
           </main>

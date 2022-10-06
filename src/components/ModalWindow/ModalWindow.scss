@@ -2,6 +2,7 @@
 @use "../../assets/styles/mixins.scss";
 
 .modalWindow {
+  z-index: 1001;
   @include mixins.centered-horizontal-column();
   position: fixed;
   width: 40vw;
@@ -9,7 +10,9 @@
   background-color: colors.$dark-blue;
   left: 30vw;
   right: 30vw;
-  top: -20vh;
+  top: -21vh;
+  border: colors.$light-gray-blue solid;
+  border-radius: 5px;
   justify-content: center;
   transition: 1s ease-in-out;
   box-shadow: inset 0 -5em 5em rgba(0, 0, 0, 0.1),
