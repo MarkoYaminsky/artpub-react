@@ -3,14 +3,24 @@
 
 .cart {
   min-height: 79vh;
-  position: relative;
-  z-index: 2;
   padding: 1.5vh 1vw;
+  @include mixins.centered-horizontal-column();
   
   .items {
+    width: 100%;
     display: grid;
+    position: relative;
+    z-index: 2;
     grid-template-columns: 1fr;
     grid-auto-rows: 20vh;
     row-gap: 1.5vh;
+    height: 64vh;
+    overflow: scroll;
+  }
+
+  .button {
+    margin-top: 1.8vh;
+    background-color: lighten(colors.$dark-blue, 10%);
+    border-color: lighten(colors.$dark-blue, 10%);
   }
 }

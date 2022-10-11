@@ -17,6 +17,8 @@
   transition: 1s ease-in-out;
   box-shadow: inset 0 -5em 5em rgba(0, 0, 0, 0.1),
     0.5em 0.5em 1em rgba(0, 0, 0, 0.3);
+  padding-inline: 1vw;
+  text-align: center;
 
   .curtain {
     position: fixed;

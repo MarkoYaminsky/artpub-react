@@ -4,7 +4,6 @@ import "./Button.scss";
 interface ButtonProps {
   text: string;
   fontSize: string;
-  href?: string;
   class?: string;
   type?: "button" | "submit" | "reset";
   onClick?: MouseEventHandler;
