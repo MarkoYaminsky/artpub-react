@@ -3,6 +3,7 @@ import "./Catalog.scss";
 import { getArticles } from "../../services";
 import { IArticleGetResponse } from "../../types";
 import { Article } from "../../components";
+import { Link } from "react-router-dom";
 
 export const Catalog: React.FC = () => {
   const [articlesData, setArticlesData] = useState<IArticleGetResponse[]>();
