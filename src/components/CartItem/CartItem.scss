@@ -1,0 +1,64 @@
+@use "../../assets/styles/colors.scss";
+@use "../../assets/styles/mixins.scss";
+
+@mixin cart-item-section() {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: Inter;
+  font-size: 1.8rem;
+}
+
+$common-border-radius: 8px;
+
+.cartItem {
+  display: flex;
+  background-color: colors.$medium-blue;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: $common-border-radius;
+  padding: 1% 1%;
+
+  .preview {
+    @include mixins.centered-horizontal-column();
+    background-color: darken(colors.$dark-blue, 10%);
+    align-items: flex-start;
+    font-size: 0.5rem;
+    width: 15%;
+    height: 100%;
+    border-radius: $common-border-radius;
+    color: white;
+    font-family: Inter;
+    overflow: scroll;
+    padding: 0.5% 0.7%;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(colors.$dark-blue, 13%);
+    }
+  }
+
+  .info {
+    width: 35%;
+    @include cart-item-section();
+    text-align: center;
+  }
+
+  .price {
+    width: 5%;
+    @include cart-item-section();
+  }
+
+  .changeQuantity {
+    width: 8%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1.5%;
+
+    img {
+      width: 40%;
+      cursor: grab;
+    }
+  }
+}

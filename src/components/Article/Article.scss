@@ -19,14 +19,9 @@ $common-border-radius: 8px;
     border: colors.$dark-blue solid 2px;
     border-radius: $common-border-radius;
     padding: 5% 7%;
-
-    &:hover {
-      cursor: pointer;
-      background-color: lighten($article-background, 10%);
-    }
   }
 
-  span {
+  button {
     position: absolute;
     right: 5%;
     top: 2%;
@@ -35,10 +30,17 @@ $common-border-radius: 8px;
     width: fit-content;
     height: $price-span-font-size * 1.8;
     border-radius: $common-border-radius;
+    border: transparent;
     padding-inline: $price-span-font-size * 0.1;
-    @include mixins.centered-horizontal-column();
-    justify-content: center;
     color: colors.$medium-blue;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+
+    img {
+      height: $price-span-font-size * 1.2;
+      margin-left: 0.2vw;
+    }
   }
 
   .content {
@@ -53,6 +55,12 @@ $common-border-radius: 8px;
     font-family: Inter;
     overflow: hidden;
     padding-inline: 5%;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(colors.$dark-blue, 13%);
+    }
 
     h2 {
       align-self: center;
