@@ -45,9 +45,14 @@ const cartSlice = createSlice({
 
       return state;
     },
+
+    orderItems: (state) => {
+      state = [];
+      return state;
+    }
   },
 });
 
 export const getCartItemIds = (state: RootState) => state.cartItem;
-export const { addItemToCart, removeItemFromCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart, orderItems } = cartSlice.actions;
 export default cartSlice.reducer;
