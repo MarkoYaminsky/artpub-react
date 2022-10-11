@@ -3,23 +3,29 @@ import { Spots, Header, Footer } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, Catalog, Item, ContactUs } from "./pages";
 import { NotFound } from "./pages";
+import { Cart } from "./pages/Cart";
+import { Provider } from "react-redux";
+import { store } from "./redux";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Spots />
-        <Header />
-        <Routes>
-          <Route path="*" element={<NotFound />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/catalog/:articleId" element={<Item />} />
-          <Route path="/contact" element={<ContactUs />} />
-        </Routes>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="app">
+          <Spots />
+          <Header />
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/catalog/:articleId" element={<Item />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

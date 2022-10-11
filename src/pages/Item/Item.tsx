@@ -7,12 +7,15 @@ import { NotFound } from "../NotFound";
 import "./Item.scss";
 import heartSub from "../../assets/images/heartSub.svg";
 import heartUnsub from "../../assets/images/heartUnsub.svg";
+import { useAppDispatch } from "../../redux";
+import { addItemToCart } from "../Catalog";
 
 export const Item: React.FC = () => {
   const [articleData, setArticleData] = useState<IArticleGetResponse>();
   const [isSuccessful, setIsSuccessful] = useState<boolean>();
   const [isFavorite, setIsFavorite] = useState<boolean>();
   const { articleId } = useParams();
+  const dispatcher = useAppDispatch();
 
   useEffect(() => {
     getArticleById(articleId!)
@@ -20,8 +23,6 @@ export const Item: React.FC = () => {
       .then(() => setIsSuccessful(true))
       .catch(() => setIsSuccessful(false));
   }, [articleId]);
-
-  console.log(articleData);
 
   return (
     <div className="item">
@@ -34,7 +35,7 @@ export const Item: React.FC = () => {
             <div className="priceBlock">
               <h2>Price - ${articleData?.price}</h2>
               <div className="buttons">
-                <Button text="Buy now" fontSize="1.2rem" class="scale" />
+                <Button text="Buy now" fontSize="1.2rem" class="scale" onClick={() => dispatcher(addItemToCart(parseInt(articleId!)))}/>
                 <img
                   src={isFavorite ? heartSub : heartUnsub}
                   alt="heart"

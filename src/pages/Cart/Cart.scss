@@ -1,0 +1,16 @@
+@use "../../assets/styles/mixins.scss";
+@use "../../assets/styles/colors.scss";
+
+.cart {
+  min-height: 79vh;
+  position: relative;
+  z-index: 2;
+  padding: 1.5vh 1vw;
+  
+  .items {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 20vh;
+    row-gap: 1.5vh;
+  }
+}

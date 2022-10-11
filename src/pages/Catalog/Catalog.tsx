@@ -3,7 +3,6 @@ import "./Catalog.scss";
 import { getArticles } from "../../services";
 import { IArticleGetResponse } from "../../types";
 import { Article } from "../../components";
-import { Link } from "react-router-dom";
 
 export const Catalog: React.FC = () => {
   const [articlesData, setArticlesData] = useState<IArticleGetResponse[]>();
@@ -13,22 +12,6 @@ export const Catalog: React.FC = () => {
     sortOption: "byDate",
   };
   const [userInputs, setUserInputs] = useState(initialInputs);
-
-  const getParams = () => {
-    const param = userInputs.searchOption;
-    let query;
-    switch (param) {
-      case "byTitle":
-        query = `?title=${userInputs.searchInputValue}`;
-        break;
-      case "byAuthor":
-        query = `?author=${userInputs.searchInputValue}`;
-        break;
-      default:
-        query = "";
-    }
-    return query;
-  };
 
   const sortData = (data: IArticleGetResponse[]) => {
     const sortOption = userInputs.sortOption;
@@ -56,9 +39,29 @@ export const Catalog: React.FC = () => {
     return sortedData;
   };
 
+  const filterArticlesData = (data: IArticleGetResponse[]) => {
+    const param = userInputs.searchOption;
+    let filterOption: "title" | "author";
+    switch (param) {
+      case "byTitle":
+        filterOption = "title";
+        break;
+      case "byAuthor":
+        filterOption = "author";
+        break;
+      default:
+        filterOption = "title";
+    }
+
+    const filteredData = data.filter((item) =>
+      item[filterOption].includes(userInputs.searchInputValue)
+    );
+
+    return filteredData;
+  };
+
   const getArticlesData = () => {
-    const params = getParams();
-    getArticles(params).then((data) => {
+    getArticles().then((data) => {
       setArticlesData(data);
     });
   };
@@ -75,26 +78,11 @@ export const Catalog: React.FC = () => {
 
   useEffect(() => {
     getArticlesData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  let typingTimer: ReturnType<typeof setTimeout>;
-  const typingHandle = {
-    out: () => {
-      clearTimeout(typingTimer);
-      typingTimer = setTimeout(() => getArticlesData(), 700);
-    },
-    in: () => {
-      clearTimeout(typingTimer);
-    },
-  };
-
   const sortedData = articlesData ? sortData(articlesData) : [];
-  const articles = sortedData.map((article) => (
-    <Link to={`${article.id}`}>
-      <Article key={article.id} {...article} />
-    </Link>
-  ));
+  const normalizedData = filterArticlesData(sortedData);
+  const articles = normalizedData.map((article) => <Article {...article} key={`article-${article.id}`} />);
 
   return (
     <div className="catalogPage">
@@ -104,8 +92,6 @@ export const Catalog: React.FC = () => {
           name="searchInputValue"
           value={userInputs.searchInputValue}
           onChange={handleChange}
-          onKeyDown={typingHandle.in}
-          onKeyUp={typingHandle.out}
           placeholder="Search..."
         />
         <h2>Search by</h2>
