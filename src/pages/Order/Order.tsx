@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Order.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -7,20 +7,22 @@ import { useAppDispatch, useAppSelector } from "../../redux";
 import { getCartItemIds, orderItems } from "../Catalog";
 import { useNavigate } from "react-router-dom";
 import { NotFound } from "../NotFound";
+import { PriceContext } from "../../context";
 
 export const Order: React.FC = () => {
   const [modalWindowIsShown, setModalWindowIsShown] = useState(false);
   const isCartEmpty = useAppSelector(getCartItemIds).length === 0;
   const dispatcher = useAppDispatch();
   const navigate = useNavigate();
+  const context = useContext(PriceContext);
 
   const confirmOrder = () => {
-    dispatcher(orderItems);
     setModalWindowIsShown(true);
   };
 
   const redirectAfterOrder = () => {
     setModalWindowIsShown(false);
+    dispatcher(orderItems());
     navigate("/catalog");
   };
 
@@ -146,6 +148,7 @@ export const Order: React.FC = () => {
             <Field name="subscription" type="checkbox"></Field>
             Subscribe to our newsletter
           </label>
+          <p className="totalPrice">Total price: ${context?.totalPrice}</p>
           <Button
             text="Confirm order"
             fontSize="3rem"

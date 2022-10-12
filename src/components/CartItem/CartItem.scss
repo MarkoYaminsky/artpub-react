@@ -46,7 +46,7 @@ $common-border-radius: 8px;
     text-align: center;
   }
 
-  .price {
+  .totalPrice {
     width: 5%;
     @include cart-item-section();
   }

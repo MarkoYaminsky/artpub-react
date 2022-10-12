@@ -84,6 +84,17 @@ $radio-button-unselected-color-hover: rgb(148, 146, 146);
       margin-block: 1vh;
       color: colors.$dark-blue;
       font-family: Inter;
+      margin-bottom: 5vh;
+
+      &::after {
+        margin-top: 1vh;
+        display: block;
+        content: "";
+        width: 60vw;
+        align-self: center;
+        height: 1px;
+        background-color: black;
+      }
     }
 
     input[type="checkbox"] {
@@ -115,7 +126,14 @@ $radio-button-unselected-color-hover: rgb(148, 146, 146);
     }
 
     button {
-      margin-block: 3vh;
+      margin-bottom: 3vh;
     }
   }
+}
+
+.totalPrice {
+  font-size: 2.5rem;
+  font-family: Inter;
+  color: colors.$dark-blue;
+  margin-bottom: 0.5vh;
 }
