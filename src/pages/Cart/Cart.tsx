@@ -5,11 +5,23 @@ import { getCartItemIds } from "../Catalog";
 import { CartItem } from "../../components/CartItem";
 import { Button, ModalWindow } from "../../components";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { PriceContext } from "../../context";
 
 export const Cart: React.FC = () => {
   const cartData = useAppSelector(getCartItemIds);
   const [modalWindowIsShown, setModalWindowIsShown] = useState(false);
+  const context = useContext(PriceContext);
+
+  const getTotalPrice = () => {
+    const allPrices = Array.from(document.querySelectorAll(".totalPrice"));
+    let totalPrice = 0;
+    allPrices.forEach(
+      (price) => (totalPrice += parseInt(price.innerHTML.slice(1)))
+    );;
+
+    return totalPrice;
+  };
 
   const cartItems = cartData.map((item) => (
     <CartItem
@@ -28,10 +40,20 @@ export const Cart: React.FC = () => {
       />
       <div className="items">{cartItems}</div>
       {cartData.length === 0 ? (
-        <Button text="Make an order" fontSize="2.5rem" class="scale" onClick={() => setModalWindowIsShown(true)} />
+        <Button
+          text="Make an order"
+          fontSize="2.5rem"
+          class="scale"
+          onClick={() => setModalWindowIsShown(true)}
+        />
       ) : (
         <Link to="/cart/order">
-          <Button text="Make an order" fontSize="2.5rem" class="scale" />
+          <Button
+            text="Make an order"
+            fontSize="2.5rem"
+            class="scale"
+            onClick={() => context?.setTotalPrice(getTotalPrice())}
+          />
         </Link>
       )}
     </div>

@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://127.0.0.1:8000/",
+  baseURL: "http://127.0.0.1:8000",
 });
 
 export const getArticles = async () => {
-  const response = await http.get("/articles");
+  const response = await http.get("/articles/");
 
   return response.data;
 };
