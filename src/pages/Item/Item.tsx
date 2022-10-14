@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button } from "../../components";
+import { Button, WithAuth } from "../../components";
 import { getArticleById } from "../../services";
 import { IArticleGetResponse } from "../../types";
 import { NotFound } from "../NotFound";
@@ -10,7 +10,7 @@ import heartUnsub from "../../assets/images/heartUnsub.svg";
 import { useAppDispatch } from "../../redux";
 import { addItemToCart } from "../Catalog";
 
-export const Item: React.FC = () => {
+const ItemComponent: React.FC = () => {
   const [articleData, setArticleData] = useState<IArticleGetResponse>();
   const [isSuccessful, setIsSuccessful] = useState<boolean>();
   const [isFavorite, setIsFavorite] = useState<boolean>();
@@ -59,3 +59,5 @@ export const Item: React.FC = () => {
     </div>
   );
 };
+
+export const Item: React.FC = () => <WithAuth><ItemComponent /></WithAuth>

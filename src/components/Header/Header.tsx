@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux";
 import { getCartItemIds } from "../../pages";
+import logout from "../../assets/images/logout.svg"
+import { AppContext } from "../../context";
 
 export const Header: React.FC = () => {
   const cartItems = useAppSelector(getCartItemIds);
   let cartItemsQuantity = 0;
+  const context = useContext(AppContext);
+
   cartItems.forEach((item) => {
     cartItemsQuantity += item.quantity;
   });
@@ -30,6 +34,7 @@ export const Header: React.FC = () => {
         <Link to="/contact">
           <span>Contact us</span>
         </Link>
+        <img src={logout} alt="" onClick={() => context?.logout()} />
       </nav>
     </header>
   );

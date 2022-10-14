@@ -3,15 +3,15 @@ import "./Cart.scss";
 import { useAppSelector } from "../../redux";
 import { getCartItemIds } from "../Catalog";
 import { CartItem } from "../../components/CartItem";
-import { Button, ModalWindow } from "../../components";
+import { Button, ModalWindow, WithAuth } from "../../components";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { PriceContext } from "../../context";
+import { AppContext } from "../../context";
 
-export const Cart: React.FC = () => {
+const CartComponent: React.FC = () => {
   const cartData = useAppSelector(getCartItemIds);
   const [modalWindowIsShown, setModalWindowIsShown] = useState(false);
-  const context = useContext(PriceContext);
+  const context = useContext(AppContext);
 
   const getTotalPrice = () => {
     const allPrices = Array.from(document.querySelectorAll(".totalPrice"));
@@ -59,3 +59,5 @@ export const Cart: React.FC = () => {
     </div>
   );
 };
+
+export const Cart: React.FC = () => <WithAuth><CartComponent /></WithAuth>

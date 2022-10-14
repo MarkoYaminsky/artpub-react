@@ -1,4 +1,5 @@
 import React from "react";
+import { WithAuth } from "../../components";
 import "./Home.scss";
 
 interface HomeSectionProps {
@@ -16,7 +17,7 @@ const HomePageSection: React.FC<HomeSectionProps> = (props) => {
   );
 };
 
-export const Home: React.FC = () => {
+const HomeComponent: React.FC = () => {
   return (
     <div className="home">
       <HomePageSection
@@ -37,3 +38,5 @@ export const Home: React.FC = () => {
     </div>
   );
 };
+
+export const Home: React.FC = () => <WithAuth><HomeComponent /></WithAuth>

@@ -1,0 +1,65 @@
+@use "../../assets/styles/mixins.scss";
+@use "../../assets/styles/colors.scss";
+
+.login {
+  min-height: 79vh;
+  @include mixins.centered-horizontal-column();
+
+  h1 {
+    color: colors.$medium-blue;
+    font-size: 5rem;
+    font-family: Karla;
+    margin-block: 8vh;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-family: Inter;
+    color: colors.$medium-blue;
+    position: absolute;
+    bottom: 2vh;
+  }
+
+  form {
+    @include mixins.centered-horizontal-column();
+    input {
+      width: 60vw;
+      font-size: 3rem;
+      height: 6rem;
+      text-indent: 2%;
+      margin-block: 3vh;
+      font-family: Inter;
+      border: colors.$medium-blue solid 1px;
+      color: colors.$medium-blue;
+      margin-block: 4.45vh;
+
+      &::placeholder {
+        opacity: 0.5;
+        color: colors.$medium-blue;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &::placeholder {
+      opacity: 0.5;
+      color: colors.$medium-blue;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .error {
+    margin: 0.1vh;
+    color: red;
+    font-family: Inter;
+  }
+
+  button {
+    margin-block: 4vh;
+  }
+}

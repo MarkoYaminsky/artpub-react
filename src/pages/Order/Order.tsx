@@ -2,19 +2,19 @@ import React, { useContext, useState } from "react";
 import "./Order.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Button, ModalWindow } from "../../components";
+import { Button, ModalWindow, WithAuth } from "../../components";
 import { useAppDispatch, useAppSelector } from "../../redux";
 import { getCartItemIds, orderItems } from "../Catalog";
 import { useNavigate } from "react-router-dom";
 import { NotFound } from "../NotFound";
-import { PriceContext } from "../../context";
+import { AppContext } from "../../context";
 
-export const Order: React.FC = () => {
+const OrderComponent: React.FC = () => {
   const [modalWindowIsShown, setModalWindowIsShown] = useState(false);
   const isCartEmpty = useAppSelector(getCartItemIds).length === 0;
   const dispatcher = useAppDispatch();
   const navigate = useNavigate();
-  const context = useContext(PriceContext);
+  const context = useContext(AppContext);
 
   const confirmOrder = () => {
     setModalWindowIsShown(true);
@@ -162,3 +162,5 @@ export const Order: React.FC = () => {
     <NotFound />
   );
 };
+
+export const Order: React.FC = () => <WithAuth><OrderComponent /></WithAuth>
