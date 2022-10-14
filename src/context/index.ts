@@ -1,1 +1,1 @@
-export * from "./PriceContext";
+export * from "./AppContext";

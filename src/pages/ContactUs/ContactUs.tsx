@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./ContactUs.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Button, ModalWindow } from "../../components";
+import { Button, ModalWindow, WithAuth } from "../../components";
 
-export const ContactUs: React.FC = () => {
+const ContactUsComponent: React.FC = () => {
   const [modalWindowIsShown, setModalWindowIsShown] = useState(false);
 
   return (
@@ -81,3 +81,5 @@ export const ContactUs: React.FC = () => {
     </div>
   );
 };
+
+export const ContactUs: React.FC = () => <WithAuth><ContactUsComponent /></WithAuth>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { getArticleById } from "../../services";
 import { IArticleGetResponse } from "../../types";
 import { IItemInfo } from "../../types/IItemInfo";
@@ -9,20 +9,16 @@ import minus from "../../assets/images/minus.svg";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux";
 import { addItemToCart, removeItemFromCart } from "../../pages";
-import { PriceContext } from "../../context";
 
 export const CartItem: React.FC<IItemInfo> = (props) => {
   const [cartItemInfo, setCartItemInfo] = useState<IArticleGetResponse>();
   const dispatcher = useAppDispatch();
-  const context = useContext(PriceContext);
 
   useEffect(() => {
     getArticleById(JSON.stringify(props.id)).then((data: IArticleGetResponse) =>
       setCartItemInfo(data)
     );
-  }, [props]);
-
-  console.log(context?.totalPrice); 
+  }, [props]); 
 
   return (
     <div className="cartItem">

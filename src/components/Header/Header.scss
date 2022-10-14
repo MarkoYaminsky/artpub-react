@@ -25,13 +25,20 @@ header {
   nav {
     @include mixins.space-between-center-row(36%);
 
+    img {
+      width: 2vw;
+      position: absolute;
+      right: 1.5vw;
+      cursor: pointer;
+    }
+
     span {
       height: $header-height;
       @include mixins.space-between-center-row(100%);
       justify-content: center;
 
       &:hover {
-        background-color: darken($color: colors.$dark-blue, $amount: 2%);
+        background-color: darken($color: colors.$dark-blue, $amount: 3%);
       }
     }
 

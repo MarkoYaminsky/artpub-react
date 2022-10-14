@@ -3,3 +3,7 @@ export * from "./Catalog";
 export * from "./Item";
 export * from "./NotFound";
 export * from "./ContactUs";
+export * from "./Cart";
+export * from "./Registration";
+export * from "./Order";
+export * from "./Login";

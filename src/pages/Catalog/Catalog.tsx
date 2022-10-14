@@ -2,9 +2,9 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import "./Catalog.scss";
 import { getArticles } from "../../services";
 import { IArticleGetResponse } from "../../types";
-import { Article } from "../../components";
+import { Article, WithAuth } from "../../components";
 
-export const Catalog: React.FC = () => {
+const CatalogComponent: React.FC = () => {
   const [articlesData, setArticlesData] = useState<IArticleGetResponse[]>();
   const initialInputs = {
     searchInputValue: "",
@@ -177,3 +177,5 @@ export const Catalog: React.FC = () => {
     </div>
   );
 };
+
+export const Catalog: React.FC = () => <WithAuth><CatalogComponent /></WithAuth>
